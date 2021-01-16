@@ -1,0 +1,1 @@
+{"id":"46a16de5-f1e0-4e18-8799-0b4b0abd75c2","name":"Task-taskform.frm","model":{"taskName":"Task","processId":"SistemadeBar.AcessarCardapio","properties":[],"formModelType":"org.kie.workbench.common.forms.jbpm.model.authoring.task.TaskFormModel"},"fields":[],"layoutTemplate":{"version":3,"style":"FLUID","layoutProperties":{},"rows":[]}}
