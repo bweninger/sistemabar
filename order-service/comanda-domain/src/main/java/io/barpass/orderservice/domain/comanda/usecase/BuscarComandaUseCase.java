@@ -1,0 +1,14 @@
+package io.barpass.orderservice.domain.comanda.usecase;
+
+import io.barpass.commons.domain.usecase.ReadUseCase;
+import io.barpass.orderservice.domain.comanda.entity.Comanda;
+import io.barpass.orderservice.domain.comanda.entity.ComandaPK;
+
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
+
+public interface BuscarComandaUseCase extends ReadUseCase<Comanda, ComandaPK> {
+
+    Optional<Comanda> getByUserAndDate(UUID idUsuario, Instant date);
+}
