@@ -6,18 +6,40 @@ import java.util.UUID;
 
 public class Comanda {
 
-    private ComandaPK comandaPK;
+    private UUID id;
+
+    private Long numeroComanda;
 
     private UUID idUsuario;
 
+    private Instant dataInicioVigencia;
+
     private Instant dataFimVigencia;
 
-    public ComandaPK getComandaPK() {
-        return comandaPK;
+    private TipoComanda tipo;
+
+    public UUID getId() {
+        return id;
     }
 
-    public void setComandaPK(ComandaPK comandaPK) {
-        this.comandaPK = comandaPK;
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public Long getNumeroComanda() {
+        return numeroComanda;
+    }
+
+    public void setNumeroComanda(Long numeroComanda) {
+        this.numeroComanda = numeroComanda;
+    }
+
+    public Instant getDataInicioVigencia() {
+        return dataInicioVigencia;
+    }
+
+    public void setDataInicioVigencia(Instant dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
     }
 
     public Optional<UUID> getIdUsuario() {
@@ -34,5 +56,13 @@ public class Comanda {
 
     public void setDataFimVigencia(Instant dataFimVigencia) {
         this.dataFimVigencia = dataFimVigencia;
+    }
+
+    public TipoComanda getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoComanda tipo) {
+        this.tipo = tipo;
     }
 }

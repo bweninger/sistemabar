@@ -1,17 +1,22 @@
 package io.barpass.orderservice.domain.pedido.vo;
 
+import io.barpass.orderservice.domain.pedido.entity.StatusPedido;
+
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 public class PedidoVO {
 
     private UUID id;
 
-    private UUID idUsuario;
+    private UUID idComanda;
 
-    private Instant dataInicioVigencia;
+    private List<ItemPedidoVO> itens;
 
-    private Instant dataFimVigencia;
+    private StatusPedido status;
+
+    private Instant dataPedido;
 
     public UUID getId() {
         return id;
@@ -21,27 +26,35 @@ public class PedidoVO {
         this.id = id;
     }
 
-    public Instant getDataInicioVigencia() {
-        return dataInicioVigencia;
+    public UUID getIdComanda() {
+        return idComanda;
     }
 
-    public void setDataInicioVigencia(Instant dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
+    public void setIdComanda(UUID idComanda) {
+        this.idComanda = idComanda;
     }
 
-    public UUID getIdUsuario() {
-        return idUsuario;
+    public List<ItemPedidoVO> getItens() {
+        return itens;
     }
 
-    public void setIdUsuario(UUID idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setItens(List<ItemPedidoVO> itens) {
+        this.itens = itens;
     }
 
-    public Instant getDataFimVigencia() {
-        return dataFimVigencia;
+    public StatusPedido getStatus() {
+        return status;
     }
 
-    public void setDataFimVigencia(Instant dataFimVigencia) {
-        this.dataFimVigencia = dataFimVigencia;
+    public void setStatus(StatusPedido status) {
+        this.status = status;
+    }
+
+    public Instant getDataPedido() {
+        return dataPedido;
+    }
+
+    public void setDataPedido(Instant dataPedido) {
+        this.dataPedido = dataPedido;
     }
 }

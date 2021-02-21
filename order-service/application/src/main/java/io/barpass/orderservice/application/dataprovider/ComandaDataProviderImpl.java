@@ -18,7 +18,7 @@ public class ComandaDataProviderImpl extends AbstractDataProviderImpl<Comanda> i
     }
 
     @Override
-    public Collection<Comanda> listByUsuarioAndVigencia(UUID idUsuario, Instant dataVigencia) {
+    public Collection<Comanda> listByUsuarioNumeroAndVigencia(UUID idUsuario, Instant dataVigencia) {
         return null;
     }
 }

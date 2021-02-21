@@ -5,6 +5,7 @@ import io.barpass.orderservice.domain.pedido.command.CriarPedidoCommand;
 import io.barpass.orderservice.domain.pedido.command.DeletarPedidoCommand;
 import io.barpass.orderservice.domain.pedido.vo.PedidoVO;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,5 +19,5 @@ public interface PedidoService {
 
     PedidoVO get(UUID pedidoId);
 
-    List<PedidoVO> list();
+    List<PedidoVO> list(UUID idComanda);
 }

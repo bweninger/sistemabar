@@ -10,10 +10,6 @@ import java.util.Objects;
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-02-04T12:54:47.972Z")
-
-
-
-
 public class ItemPedidosResponseList extends ArrayList<ItemPedidoResponse>  {
 
   @Override

@@ -9,5 +9,5 @@ import java.util.UUID;
 
 public interface ListarComandasUseCase extends ListUseCase<Comanda> {
 
-    Collection<Comanda> listByIdUsuarioAndVigencia(UUID idUsuario, Instant dataVigencia);
+    Collection<Comanda> listByIdUsuarioNumeroAndVigencia(UUID idUsuario, Long numeroComanda, Instant dataVigencia);
 }

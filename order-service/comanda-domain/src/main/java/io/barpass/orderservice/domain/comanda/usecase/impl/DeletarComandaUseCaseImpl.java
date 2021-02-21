@@ -1,12 +1,11 @@
 package io.barpass.orderservice.domain.comanda.usecase.impl;
 
 import io.barpass.orderservice.domain.comanda.dataprovider.ComandaDataProvider;
-import io.barpass.orderservice.domain.comanda.entity.ComandaPK;
 import io.barpass.orderservice.domain.comanda.usecase.DeletarComandaUseCase;
 
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.Objects;
+import java.util.UUID;
 
 @Named
 public class DeletarComandaUseCaseImpl implements DeletarComandaUseCase {
@@ -19,10 +18,7 @@ public class DeletarComandaUseCaseImpl implements DeletarComandaUseCase {
     }
 
     @Override
-    public void delete(ComandaPK primaryKey) {
-        if (Objects.isNull(primaryKey.getId()) || Objects.isNull(primaryKey.getDataInicioVigencia())) {
-            throw new IllegalArgumentException("Id da Comanda e Data de Inicio de Vigencia sao obrigatorios para deletar uma comnada.");
-        }
-        this.comandaDataProvider.delete(primaryKey.getId(), primaryKey.getDataInicioVigencia());
+    public void doDelete(UUID primaryKey) {
+        this.comandaDataProvider.delete(primaryKey);
     }
 }

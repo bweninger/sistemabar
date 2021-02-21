@@ -1,5 +1,7 @@
 package io.barpass.commons.domain.usecase;
 
+import java.util.Optional;
+
 public interface ReadUseCase <ENTITY, PK> {
-    ENTITY read(PK pk);
+    Optional<ENTITY> read(PK pk);
 }

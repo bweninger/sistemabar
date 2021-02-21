@@ -23,6 +23,12 @@ public class ComandaResponse {
     @JsonProperty("idUsuario")
     private UUID idUsuario = null;
 
+    @JsonProperty("numeroComanda")
+    private Long numeroComanda;
+
+    @JsonProperty("tipoComanda")
+    private String tipoComanda;
+
     @JsonProperty("vigencia")
     private ComandaResponseVigencia vigencia = null;
 
@@ -62,7 +68,7 @@ public class ComandaResponse {
      *
      * @return vigencia
      **/
-    @ApiModelProperty(value = "")
+    @ApiModelProperty(value = "Vigencia da Comanda")
     @Valid
     public ComandaResponseVigencia getVigencia() {
         return vigencia;
@@ -72,20 +78,13 @@ public class ComandaResponse {
         this.vigencia = vigencia;
     }
 
-    public ComandaResponse pedidos(PedidosResponseList pedidos) {
-        this.pedidos = pedidos;
-        return this;
-    }
-
     /**
      * Get pedidos
      *
      * @return pedidos
      **/
     @ApiModelProperty(value = "")
-
     @Valid
-
     public PedidosResponseList getPedidos() {
         return pedidos;
     }
@@ -94,49 +93,52 @@ public class ComandaResponse {
         this.pedidos = pedidos;
     }
 
+    @ApiModelProperty(value = "Numero da Comanda Fisica")
+    public Long getNumeroComanda() {
+        return numeroComanda;
+    }
+
+    public void setNumeroComanda(Long numeroComanda) {
+        this.numeroComanda = numeroComanda;
+    }
+
+    @ApiModelProperty(value = "Tipo da Comanda")
+    public String getTipoComanda() {
+        return tipoComanda;
+    }
+
+    public void setTipoComanda(String tipoComanda) {
+        this.tipoComanda = tipoComanda;
+    }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ComandaResponse comandaResponse = (ComandaResponse) o;
-        return Objects.equals(this.idComanda, comandaResponse.idComanda) &&
-                Objects.equals(this.idUsuario, comandaResponse.idUsuario) &&
-                Objects.equals(this.vigencia, comandaResponse.vigencia) &&
-                Objects.equals(this.pedidos, comandaResponse.pedidos);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ComandaResponse that = (ComandaResponse) o;
+        return Objects.equals(idComanda, that.idComanda) &&
+                Objects.equals(idUsuario, that.idUsuario) &&
+                Objects.equals(numeroComanda, that.numeroComanda) &&
+                Objects.equals(tipoComanda, that.tipoComanda) &&
+                Objects.equals(vigencia, that.vigencia) &&
+                Objects.equals(pedidos, that.pedidos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idComanda, idUsuario, vigencia, pedidos);
+        return Objects.hash(idComanda, idUsuario, numeroComanda, tipoComanda, vigencia, pedidos);
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("class ComandaResponse {\n");
-
-        sb.append("    idComanda: ").append(toIndentedString(idComanda)).append("\n");
-        sb.append("    idUsuario: ").append(toIndentedString(idUsuario)).append("\n");
-        sb.append("    vigencia: ").append(toIndentedString(vigencia)).append("\n");
-        sb.append("    pedidos: ").append(toIndentedString(pedidos)).append("\n");
-        sb.append("}");
-        return sb.toString();
-    }
-
-    /**
-     * Convert the given object to string with each line indented by 4 spaces
-     * (except the first line).
-     */
-    private String toIndentedString(Object o) {
-        if (o == null) {
-            return "null";
-        }
-        return o.toString().replace("\n", "\n    ");
+        return "ComandaResponse{" +
+                "idComanda=" + idComanda +
+                ", idUsuario=" + idUsuario +
+                ", numeroComanda=" + numeroComanda +
+                ", tipoComanda='" + tipoComanda + '\'' +
+                ", vigencia=" + vigencia +
+                ", pedidos=" + pedidos +
+                '}';
     }
 }
 

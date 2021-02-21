@@ -2,12 +2,14 @@ package io.barpass.orderservice.domain.comanda.usecase.impl;
 
 import io.barpass.orderservice.domain.comanda.dataprovider.ComandaDataProvider;
 import io.barpass.orderservice.domain.comanda.entity.Comanda;
-import io.barpass.orderservice.domain.comanda.entity.ComandaPK;
 import io.barpass.orderservice.domain.comanda.usecase.BuscarComandaUseCase;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.time.Instant;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
 
 @Named
 public class BuscarComandaUseCaseImpl implements BuscarComandaUseCase {
@@ -20,11 +22,16 @@ public class BuscarComandaUseCaseImpl implements BuscarComandaUseCase {
     }
 
     @Override
-    public Comanda read(ComandaPK comandaPK) {
-        if (Objects.isNull(comandaPK.getId()) || Objects.isNull(comandaPK.getDataInicioVigencia())) {
-            throw new IllegalArgumentException("Id da Comanda e Data de Inicio de Vigencia sao obrigatorios para buscar uma comnada.");
+    public Optional<Comanda> getByUserAndDate(UUID idUsuario, Instant date) {
+        return this.comandaDataProvider.listByUsuarioNumeroAndVigencia(idUsuario, null, date).stream().findFirst();
+    }
+
+    @Override
+    public Optional<Comanda> read(UUID uuid) {
+        if (Objects.isNull(uuid)) {
+            throw new IllegalArgumentException("Id da Comanda obrigatorio para buscar uma comnada.");
         }
 
-        return this.comandaDataProvider.get(comandaPK.getId(), comandaPK.getDataInicioVigencia());
+        return Optional.ofNullable(this.comandaDataProvider.get(uuid));
     }
 }

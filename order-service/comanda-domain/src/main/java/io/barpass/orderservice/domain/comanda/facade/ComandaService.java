@@ -17,7 +17,7 @@ public interface ComandaService {
 
     void delete(DeletarComandaCommand command);
 
-    ComandaVO get(UUID comandaId, Instant dataVigencia);
+    ComandaVO get(UUID comandaId);
 
-    List<ComandaVO> list(UUID idUsuario, Instant dataVigencia);
+    List<ComandaVO> list(UUID idUsuario, Long numeroComanda, Instant dataVigencia);
 }

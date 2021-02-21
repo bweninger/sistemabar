@@ -6,14 +6,20 @@ import java.util.UUID;
 
 public class CriarComandaCommand {
 
-    private UUID idComanda;
-
     private UUID idUsuario;
+
+    private Long numeroComanda;
 
     private Instant dataInicioVigencia;
 
-    public Optional<UUID> getIdComanda() {
-        return Optional.ofNullable(idComanda);
+    private String tipoComanda;
+
+    public String getTipoComanda() {
+        return tipoComanda;
+    }
+
+    public Optional<Long> getNumeroComanda() {
+        return Optional.ofNullable(numeroComanda);
     }
 
     public Optional<UUID> getIdUsuario() {
@@ -26,9 +32,10 @@ public class CriarComandaCommand {
 
 
     public static final class CriarComandaCommandBuilder {
-        private UUID idComanda;
         private UUID idUsuario;
+        private Long numeroComanda;
         private Instant dataInicioVigencia;
+        private String tipoComanda;
 
         private CriarComandaCommandBuilder() {
         }
@@ -37,13 +44,13 @@ public class CriarComandaCommand {
             return new CriarComandaCommandBuilder();
         }
 
-        public CriarComandaCommandBuilder withIdComanda(UUID idComanda) {
-            this.idComanda = idComanda;
+        public CriarComandaCommandBuilder withIdUsuario(UUID idUsuario) {
+            this.idUsuario = idUsuario;
             return this;
         }
 
-        public CriarComandaCommandBuilder withIdUsuario(UUID idUsuario) {
-            this.idUsuario = idUsuario;
+        public CriarComandaCommandBuilder withNumeroComanda(Long numeroComanda) {
+            this.numeroComanda = numeroComanda;
             return this;
         }
 
@@ -52,11 +59,17 @@ public class CriarComandaCommand {
             return this;
         }
 
+        public CriarComandaCommandBuilder withTipoComanda(String tipoComanda) {
+            this.tipoComanda = tipoComanda;
+            return this;
+        }
+
         public CriarComandaCommand build() {
             CriarComandaCommand criarComandaCommand = new CriarComandaCommand();
-            criarComandaCommand.idUsuario = this.idUsuario;
-            criarComandaCommand.idComanda = this.idComanda;
+            criarComandaCommand.numeroComanda = this.numeroComanda;
             criarComandaCommand.dataInicioVigencia = this.dataInicioVigencia;
+            criarComandaCommand.idUsuario = this.idUsuario;
+            criarComandaCommand.tipoComanda = this.tipoComanda;
             return criarComandaCommand;
         }
     }

@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Objeto para atualizacao de um pedido.
@@ -20,7 +21,7 @@ import java.util.Objects;
 public class AtualizarPedidoRequest {
 
     @JsonProperty("idComanda")
-    private String idComanda = null;
+    private UUID idComanda = null;
 
     @JsonProperty("itemPedidos")
     @Valid
@@ -43,11 +44,11 @@ public class AtualizarPedidoRequest {
      **/
     @ApiModelProperty(required = true, value = "id da comanda")
     @NotNull
-    public String getIdComanda() {
+    public UUID getIdComanda() {
         return idComanda;
     }
 
-    public void setIdComanda(String idComanda) {
+    public void setIdComanda(UUID idComanda) {
         this.idComanda = idComanda;
     }
 

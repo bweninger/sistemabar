@@ -27,11 +27,11 @@ public class BuscarPedidoUseCaseImpl implements BuscarPedidoUseCase {
     }
 
     @Override
-    public Pedido read(UUID uuid) {
+    public Optional<Pedido> read(UUID uuid) {
         if (Objects.isNull(uuid)) {
-            throw new IllegalArgumentException("Id da Pedido e Data de Inicio de Vigencia sao obrigatorios para buscar uma comnada.");
+            throw new IllegalArgumentException("Id do Pedido obrigatorio para efetuar busca.");
         }
 
-        return this.pedidoDataProvider.get(uuid);
+        return Optional.ofNullable(this.pedidoDataProvider.get(uuid));
     }
 }

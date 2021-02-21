@@ -1,15 +1,20 @@
 package io.barpass.commons.domain.usecase;
 
-public interface DeleteUseCase <PK> {
+import java.util.Objects;
+import java.util.UUID;
 
-    default void delete(PK primaryKey) {
-        this.validate(primaryKey);
-        doDelete(primaryKey);
+public interface DeleteUseCase {
+
+    default void delete(UUID id) {
+        this.validate(id);
+        doDelete(id);
     }
 
-    default void validate (PK primaryKey) {
-
+    default void validate(UUID id) {
+        if (Objects.isNull(id)) {
+            throw new IllegalArgumentException("Id da Entidade nao pode ser nulo para operacao de Delete.");
+        }
     }
 
-    void doDelete(PK primaryKey);
+    void doDelete(UUID primaryKey);
 }

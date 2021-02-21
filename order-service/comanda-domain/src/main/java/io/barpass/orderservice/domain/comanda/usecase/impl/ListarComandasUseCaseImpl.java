@@ -26,11 +26,11 @@ public class ListarComandasUseCaseImpl implements ListarComandasUseCase {
     }
 
     @Override
-    public Collection<Comanda> listByIdUsuarioAndVigencia(UUID idUsuario, Instant dataVigencia) {
-        if (idUsuario == null && dataVigencia == null) {
+    public Collection<Comanda> listByIdUsuarioNumeroAndVigencia(UUID idUsuario, Long numeroComanda, Instant dataVigencia) {
+        if (idUsuario == null && numeroComanda == null && dataVigencia == null) {
             return list();
         } else {
-            return this.comandaDataProvider.listByUsuarioAndVigencia(idUsuario, dataVigencia);
+            return this.comandaDataProvider.listByUsuarioNumeroAndVigencia(idUsuario, numeroComanda, dataVigencia);
         }
     }
 }

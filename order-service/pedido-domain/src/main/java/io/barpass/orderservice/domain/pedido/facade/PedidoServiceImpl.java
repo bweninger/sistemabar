@@ -79,9 +79,9 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public List<PedidoVO> list() {
-        return this.listarPedidosUseCase.list().stream().map(this.pedidoMapper::toValueObject).collect(Collectors.toList());
+    public List<PedidoVO> list(UUID idComanda) {
+        return this.listarPedidosUseCase.listByIdComanda(idComanda).stream().
+                map(this.pedidoMapper::toValueObject).collect(Collectors.toList());
     }
-
 
 }

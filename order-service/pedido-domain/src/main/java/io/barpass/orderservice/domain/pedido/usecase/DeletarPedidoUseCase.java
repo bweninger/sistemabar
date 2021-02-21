@@ -4,6 +4,6 @@ import io.barpass.commons.domain.usecase.DeleteUseCase;
 
 import java.util.UUID;
 
-public interface DeletarPedidoUseCase extends DeleteUseCase<UUID> {
+public interface DeletarPedidoUseCase extends DeleteUseCase {
 
 }

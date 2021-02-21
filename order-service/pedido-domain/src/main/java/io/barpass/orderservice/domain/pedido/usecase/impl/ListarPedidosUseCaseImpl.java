@@ -7,6 +7,8 @@ import io.barpass.orderservice.domain.pedido.usecase.ListarPedidosUseCase;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.Collection;
+import java.util.Objects;
+import java.util.UUID;
 
 @Named
 public class ListarPedidosUseCaseImpl implements ListarPedidosUseCase {
@@ -23,4 +25,12 @@ public class ListarPedidosUseCaseImpl implements ListarPedidosUseCase {
         return this.pedidoDataProvider.getAll();
     }
 
+    @Override
+    public Collection<Pedido> listByIdComanda(UUID idComanda) {
+        if (Objects.isNull(idComanda)) {
+            return list();
+        } else {
+            return this.pedidoDataProvider.listByIdComanda(idComanda);
+        }
+    }
 }
