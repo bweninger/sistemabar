@@ -1,6 +1,8 @@
 package io.barpass.orderservice.application.model;
 
 import java.util.Objects;
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,7 +23,7 @@ public class ItemPedidoResponse   {
   private String idItemPedido = null;
 
   @JsonProperty("idPedido")
-  private String idPedido = null;
+  private UUID idPedido = null;
 
   @JsonProperty("idProduto")
   private Object idProduto = null;
@@ -52,7 +54,7 @@ public class ItemPedidoResponse   {
     this.idItemPedido = idItemPedido;
   }
 
-  public ItemPedidoResponse idPedido(String idPedido) {
+  public ItemPedidoResponse idPedido(UUID idPedido) {
     this.idPedido = idPedido;
     return this;
   }
@@ -64,11 +66,11 @@ public class ItemPedidoResponse   {
   @ApiModelProperty(value = "id do Pedido")
 
 
-  public String getIdPedido() {
+  public UUID getIdPedido() {
     return idPedido;
   }
 
-  public void setIdPedido(String idPedido) {
+  public void setIdPedido(UUID idPedido) {
     this.idPedido = idPedido;
   }
 

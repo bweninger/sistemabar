@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -23,17 +24,17 @@ public class CriarComandaRequest {
     private Long numeroComanda;
 
     @JsonProperty("dataInicioVigencia")
-    private Instant dataInicioVigencia;
+    private LocalDateTime dataInicioVigencia;
 
     @JsonProperty("tipoComanda")
     private String tipoComanda;
 
     @ApiModelProperty(required = false, value = "data de inicio da vigencia da comanda")
-    public Instant getDataInicioVigencia() {
+    public LocalDateTime getDataInicioVigencia() {
         return dataInicioVigencia;
     }
 
-    public void setDataInicioVigencia(Instant dataInicioVigencia) {
+    public void setDataInicioVigencia(LocalDateTime dataInicioVigencia) {
         this.dataInicioVigencia = dataInicioVigencia;
     }
 

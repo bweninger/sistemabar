@@ -6,3 +6,8 @@ springfox:
 
 server:
   port: 80
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orderdb
+    username: postgres
+    password: password

@@ -2,18 +2,18 @@ package io.barpass.orderservice.domain.pedido.usecase.impl;
 
 import io.barpass.orderservice.domain.pedido.dataprovider.PedidoDataProvider;
 import io.barpass.orderservice.domain.pedido.usecase.DeletarPedidoUseCase;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Objects;
 import java.util.UUID;
 
-@Named
+@Component
 public class DeletarPedidoUseCaseImpl implements DeletarPedidoUseCase {
 
     private PedidoDataProvider pedidoDataProvider;
 
-    @Inject
+    @Autowired
     public DeletarPedidoUseCaseImpl(PedidoDataProvider pedidoDataProvider) {
         this.pedidoDataProvider = pedidoDataProvider;
     }

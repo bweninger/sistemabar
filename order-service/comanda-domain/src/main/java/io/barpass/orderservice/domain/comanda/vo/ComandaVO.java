@@ -3,6 +3,7 @@ package io.barpass.orderservice.domain.comanda.vo;
 import io.barpass.orderservice.domain.comanda.entity.TipoComanda;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class ComandaVO {
@@ -11,9 +12,9 @@ public class ComandaVO {
 
     private UUID idUsuario;
 
-    private Instant dataInicioVigencia;
+    private LocalDateTime dataInicioVigencia;
 
-    private Instant dataFimVigencia;
+    private LocalDateTime dataFimVigencia;
 
     private TipoComanda tipoComanda;
 
@@ -27,28 +28,12 @@ public class ComandaVO {
         this.id = id;
     }
 
-    public Instant getDataInicioVigencia() {
-        return dataInicioVigencia;
-    }
-
-    public void setDataInicioVigencia(Instant dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-    }
-
     public UUID getIdUsuario() {
         return idUsuario;
     }
 
     public void setIdUsuario(UUID idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public Instant getDataFimVigencia() {
-        return dataFimVigencia;
-    }
-
-    public void setDataFimVigencia(Instant dataFimVigencia) {
-        this.dataFimVigencia = dataFimVigencia;
     }
 
     public TipoComanda getTipoComanda() {
@@ -65,5 +50,21 @@ public class ComandaVO {
 
     public void setNumeroComanda(Long numeroComanda) {
         this.numeroComanda = numeroComanda;
+    }
+
+    public LocalDateTime getDataInicioVigencia() {
+        return dataInicioVigencia;
+    }
+
+    public void setDataInicioVigencia(LocalDateTime dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    public LocalDateTime getDataFimVigencia() {
+        return dataFimVigencia;
+    }
+
+    public void setDataFimVigencia(LocalDateTime dataFimVigencia) {
+        this.dataFimVigencia = dataFimVigencia;
     }
 }

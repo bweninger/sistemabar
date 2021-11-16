@@ -1,6 +1,7 @@
 package io.barpass.orderservice.domain.comanda.entity;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -12,11 +13,13 @@ public class Comanda {
 
     private UUID idUsuario;
 
-    private Instant dataInicioVigencia;
+    private LocalDateTime dataInicioVigencia;
 
-    private Instant dataFimVigencia;
+    private LocalDateTime dataFimVigencia;
 
     private TipoComanda tipo;
+
+    private StatusComanda status;
 
     public UUID getId() {
         return id;
@@ -34,14 +37,6 @@ public class Comanda {
         this.numeroComanda = numeroComanda;
     }
 
-    public Instant getDataInicioVigencia() {
-        return dataInicioVigencia;
-    }
-
-    public void setDataInicioVigencia(Instant dataInicioVigencia) {
-        this.dataInicioVigencia = dataInicioVigencia;
-    }
-
     public Optional<UUID> getIdUsuario() {
         return Optional.ofNullable(idUsuario);
     }
@@ -50,19 +45,35 @@ public class Comanda {
         this.idUsuario = idUsuario;
     }
 
-    public Optional<Instant> getDataFimVigencia() {
-        return Optional.ofNullable(dataFimVigencia);
-    }
-
-    public void setDataFimVigencia(Instant dataFimVigencia) {
-        this.dataFimVigencia = dataFimVigencia;
-    }
-
     public TipoComanda getTipo() {
         return tipo;
     }
 
     public void setTipo(TipoComanda tipo) {
         this.tipo = tipo;
+    }
+
+    public StatusComanda getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusComanda status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getDataInicioVigencia() {
+        return dataInicioVigencia;
+    }
+
+    public void setDataInicioVigencia(LocalDateTime dataInicioVigencia) {
+        this.dataInicioVigencia = dataInicioVigencia;
+    }
+
+    public Optional<LocalDateTime> getDataFimVigencia() {
+        return Optional.ofNullable(dataFimVigencia);
+    }
+
+    public void setDataFimVigencia(LocalDateTime dataFimVigencia) {
+        this.dataFimVigencia = dataFimVigencia;
     }
 }

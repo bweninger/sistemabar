@@ -1,15 +1,13 @@
 package io.barpass.orderservice.application.model;
 
-import java.time.Instant;
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.LocalDate;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * vigencia da comanda
@@ -19,10 +17,10 @@ import javax.validation.Valid;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2021-02-04T12:54:47.972Z")
 public class AtualizarComandaRequestVigencia {
     @JsonProperty("dataInicio")
-    private Instant dataInicio = null;
+    private LocalDateTime dataInicio = null;
 
     @JsonProperty("dataFim")
-    private Instant dataFim = null;
+    private LocalDateTime dataFim = null;
 
     /**
      * Inicio de vigencia
@@ -31,11 +29,11 @@ public class AtualizarComandaRequestVigencia {
      **/
     @ApiModelProperty(value = "Inicio de vigencia")
     @Valid
-    public Instant getDataInicio() {
+    public LocalDateTime getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Instant dataInicio) {
+    public void setDataInicio(LocalDateTime dataInicio) {
         this.dataInicio = dataInicio;
     }
 
@@ -46,11 +44,11 @@ public class AtualizarComandaRequestVigencia {
      **/
     @ApiModelProperty(value = "Fim de vigencia")
     @Valid
-    public Instant getDataFim() {
+    public LocalDateTime getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Instant dataFim) {
+    public void setDataFim(LocalDateTime dataFim) {
         this.dataFim = dataFim;
     }
 

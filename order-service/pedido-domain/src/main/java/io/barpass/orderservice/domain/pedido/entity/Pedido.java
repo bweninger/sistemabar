@@ -1,6 +1,9 @@
 package io.barpass.orderservice.domain.pedido.entity;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -9,12 +12,16 @@ public class Pedido {
 
     private UUID id;
 
+    @NotNull
     private UUID idComanda;
 
-    private Instant dataPedido;
+    @NotNull
+    private LocalDateTime dataPedido;
 
+    @NotEmpty
     private List<ItemPedido> itens;
 
+    @NotNull
     private StatusPedido status;
 
     public UUID getId() {
@@ -25,11 +32,11 @@ public class Pedido {
         this.id = id;
     }
 
-    public Instant getDataPedido() {
+    public LocalDateTime getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPedido(Instant dataPedido) {
+    public void setDataPedido(LocalDateTime dataPedido) {
         this.dataPedido = dataPedido;
     }
 

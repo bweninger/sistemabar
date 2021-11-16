@@ -6,7 +6,7 @@ import io.barpass.orderservice.application.model.ItemPedidoResponse;
 import io.barpass.orderservice.domain.pedido.vo.ItemPedidoVO;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ItemPedidoVOMapper {
 
     ItemPedidoVO fromUpdateRequest(AtualizarItemPedidoRequest request);

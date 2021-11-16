@@ -1,12 +1,12 @@
 package io.barpass.orderservice.application.model;
 
-import java.time.Instant;
-import java.util.Objects;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * vigencia da comanda
@@ -17,12 +17,12 @@ import org.springframework.validation.annotation.Validated;
 public class ComandaResponseVigencia {
 
     @JsonProperty("dataInicio")
-    private Instant dataInicio = null;
+    private LocalDateTime dataInicio = null;
 
     @JsonProperty("dataFim")
-    private Instant dataFim = null;
+    private LocalDateTime dataFim = null;
 
-  public ComandaResponseVigencia(Instant dataInicio, Instant dataFim) {
+  public ComandaResponseVigencia(LocalDateTime dataInicio, LocalDateTime dataFim) {
     this.dataInicio = dataInicio;
     this.dataFim = dataFim;
   }
@@ -33,11 +33,11 @@ public class ComandaResponseVigencia {
      * @return dataInicio
      **/
     @ApiModelProperty(value = "Inicio de vigencia")
-    public Instant getDataInicio() {
+    public LocalDateTime getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Instant dataInicio) {
+    public void setDataInicio(LocalDateTime dataInicio) {
         this.dataInicio = dataInicio;
     }
 
@@ -47,11 +47,11 @@ public class ComandaResponseVigencia {
      * @return dataFim
      **/
     @ApiModelProperty(value = "Fim de vigencia")
-    public Instant getDataFim() {
+    public LocalDateTime getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Instant dataFim) {
+    public void setDataFim(LocalDateTime dataFim) {
         this.dataFim = dataFim;
     }
 

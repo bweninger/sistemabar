@@ -3,6 +3,7 @@ package io.barpass.orderservice.domain.pedido.vo;
 import io.barpass.orderservice.domain.pedido.entity.StatusPedido;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -16,7 +17,7 @@ public class PedidoVO {
 
     private StatusPedido status;
 
-    private Instant dataPedido;
+    private LocalDateTime dataPedido;
 
     public UUID getId() {
         return id;
@@ -50,11 +51,11 @@ public class PedidoVO {
         this.status = status;
     }
 
-    public Instant getDataPedido() {
+    public LocalDateTime getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPedido(Instant dataPedido) {
+    public void setDataPedido(LocalDateTime dataPedido) {
         this.dataPedido = dataPedido;
     }
 }

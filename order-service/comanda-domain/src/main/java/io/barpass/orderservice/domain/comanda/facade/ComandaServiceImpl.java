@@ -3,21 +3,22 @@ package io.barpass.orderservice.domain.comanda.facade;
 import io.barpass.commons.domain.exception.NotFoundException;
 import io.barpass.orderservice.domain.comanda.command.AtualizarComandaCommand;
 import io.barpass.orderservice.domain.comanda.command.CriarComandaCommand;
-import io.barpass.orderservice.domain.comanda.command.DeletarComandaCommand;
 import io.barpass.orderservice.domain.comanda.entity.Comanda;
 import io.barpass.orderservice.domain.comanda.entity.TipoComanda;
 import io.barpass.orderservice.domain.comanda.mapper.ComandaMapper;
 import io.barpass.orderservice.domain.comanda.usecase.*;
 import io.barpass.orderservice.domain.comanda.vo.ComandaVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Named
+@Component
 public class ComandaServiceImpl implements ComandaService {
 
     private CriarComandaUseCase criarComandaUseCase;
@@ -32,7 +33,7 @@ public class ComandaServiceImpl implements ComandaService {
 
     private ComandaMapper comandaMapper;
 
-    @Inject
+    @Autowired
     public ComandaServiceImpl(CriarComandaUseCase criarComandaUseCase, AtualizarComandaUseCase atualizarComandaUseCase,
                               DeletarComandaUseCase deletarComandaUseCase, BuscarComandaUseCase buscarComandaUseCase,
                               ListarComandasUseCase listarComandasUseCase, ComandaMapper comandaMapper) {
@@ -70,21 +71,26 @@ public class ComandaServiceImpl implements ComandaService {
     }
 
     @Override
-    public void delete(DeletarComandaCommand command) {
-        this.deletarComandaUseCase.delete(command.getIdComanda());
+    public void delete(UUID idComanda) {
+        this.deletarComandaUseCase.delete(idComanda);
     }
 
 
     @Override
-    public ComandaVO get(UUID comandaId) {
-        return this.buscarComandaUseCase.read(comandaId).map(this.comandaMapper::toValueObject).
-                orElseThrow(() -> new NotFoundException("Comanda nao encontrada: {}", comandaId));
+    public ComandaVO get(UUID idComanda) {
+        return this.buscarComandaUseCase.read(idComanda).map(this.comandaMapper::toValueObject).
+                orElseThrow(() -> new NotFoundException("Comanda nao encontrada: {}", idComanda));
     }
 
     @Override
-    public List<ComandaVO> list(UUID idUsuario, Long numeroComanda, Instant dataVigencia) {
+    public List<ComandaVO> list(UUID idUsuario, Long numeroComanda, LocalDateTime dataVigencia) {
         return this.listarComandasUseCase.listByIdUsuarioNumeroAndVigencia(idUsuario, numeroComanda, dataVigencia).stream().
                 map(this.comandaMapper::toValueObject).collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<ComandaVO> obterComandaPorNumeroEVigencia(Long numeroComanda, LocalDateTime date) {
+        return this.buscarComandaUseCase.getByNumeroAndDate(numeroComanda, date).map(this.comandaMapper::toValueObject);
     }
 
 }

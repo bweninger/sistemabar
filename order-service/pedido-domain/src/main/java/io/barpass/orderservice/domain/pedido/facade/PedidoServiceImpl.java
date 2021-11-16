@@ -9,15 +9,15 @@ import io.barpass.orderservice.domain.pedido.mapper.ItemPedidoMapper;
 import io.barpass.orderservice.domain.pedido.mapper.PedidoMapper;
 import io.barpass.orderservice.domain.pedido.usecase.*;
 import io.barpass.orderservice.domain.pedido.vo.PedidoVO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Named
+@Component
 public class PedidoServiceImpl implements PedidoService {
 
     private final CriarPedidoUseCase criarPedidoUseCase;
@@ -34,7 +34,7 @@ public class PedidoServiceImpl implements PedidoService {
 
     private final ItemPedidoMapper itemPedidoMapper;
 
-    @Inject
+    @Autowired
     public PedidoServiceImpl(CriarPedidoUseCase criarPedidoUseCase, AtualizarPedidoUseCase atualizarPedidoUseCase,
                              DeletarPedidoUseCase deletarPedidoUseCase, BuscarPedidoUseCase buscarPedidoUseCase,
                              ListarPedidosUseCase listarPedidosUseCase, PedidoMapper pedidoMapper, ItemPedidoMapper itemPedidoMapper) {
@@ -52,7 +52,7 @@ public class PedidoServiceImpl implements PedidoService {
         var pedido = new Pedido();
         pedido.setIdComanda(command.getIdComanda());
         pedido.setStatus(StatusPedido.PENDENTE);
-        pedido.setDataPedido(Instant.now());
+        pedido.setDataPedido(LocalDateTime.now());
         pedido.setItens(command.getItens().stream().map(this.itemPedidoMapper::fromValueObject).collect(Collectors.toList()));
         var pedidoCriado = this.criarPedidoUseCase.create(pedido);
         return this.pedidoMapper.toValueObject(pedidoCriado);
@@ -60,7 +60,7 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     public PedidoVO update(AtualizarPedidoCommand command) {
-        var pedido = this.buscarPedidoUseCase.read(command.getIdPedido());
+        var pedido = this.buscarPedidoUseCase.read(command.getIdPedido()).orElseThrow(IllegalArgumentException::new);
         pedido.setItens(command.getItens().stream().map(this.itemPedidoMapper::fromValueObject).collect(Collectors.toList()));
         pedido.setStatus(StatusPedido.valueOf(command.getStatus()));
         var pedidoAtualizado = this.atualizarPedidoUseCase.update(command.getIdPedido(), pedido);
@@ -74,7 +74,7 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     public PedidoVO get(UUID pedidoId) {
-        var pedido = this.buscarPedidoUseCase.read(pedidoId);
+        var pedido = this.buscarPedidoUseCase.read(pedidoId).orElseThrow(IllegalArgumentException::new);
         return this.pedidoMapper.toValueObject(pedido);
     }
 

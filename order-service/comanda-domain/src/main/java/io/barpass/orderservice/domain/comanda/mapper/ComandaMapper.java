@@ -1,15 +1,12 @@
 package io.barpass.orderservice.domain.comanda.mapper;
 
+import io.barpass.commons.domain.mapper.MapperWithOptional;
 import io.barpass.orderservice.domain.comanda.entity.Comanda;
 import io.barpass.orderservice.domain.comanda.vo.ComandaVO;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
-@Mapper
-public interface ComandaMapper {
+@Mapper(componentModel = "spring")
+public interface ComandaMapper extends MapperWithOptional {
 
-
-    @Mapping(source = "comandaPK.id", target = "id")
-    @Mapping(source = "comandaPK.dataInicioVigencia", target = "dataInicioVigencia")
     ComandaVO toValueObject(Comanda comanda);
 }

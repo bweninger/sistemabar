@@ -2,11 +2,11 @@ package io.barpass.orderservice.domain.comanda.facade;
 
 import io.barpass.orderservice.domain.comanda.command.AtualizarComandaCommand;
 import io.barpass.orderservice.domain.comanda.command.CriarComandaCommand;
-import io.barpass.orderservice.domain.comanda.command.DeletarComandaCommand;
 import io.barpass.orderservice.domain.comanda.vo.ComandaVO;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface ComandaService {
@@ -15,9 +15,11 @@ public interface ComandaService {
 
     ComandaVO update(AtualizarComandaCommand command);
 
-    void delete(DeletarComandaCommand command);
+    void delete(UUID idComanda);
 
-    ComandaVO get(UUID comandaId);
+    ComandaVO get(UUID idComanda);
 
-    List<ComandaVO> list(UUID idUsuario, Long numeroComanda, Instant dataVigencia);
+    List<ComandaVO> list(UUID idUsuario, Long numeroComanda, LocalDateTime dataVigencia);
+
+    Optional<ComandaVO> obterComandaPorNumeroEVigencia(Long numeroComanda, LocalDateTime date);
 }

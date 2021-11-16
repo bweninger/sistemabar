@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.barpass.orderservice.application.model.*;
 import io.barpass.orderservice.domain.comanda.command.AtualizarComandaCommand;
 import io.barpass.orderservice.domain.comanda.command.CriarComandaCommand;
-import io.barpass.orderservice.domain.comanda.command.DeletarComandaCommand;
 import io.barpass.orderservice.domain.comanda.facade.ComandaService;
 import io.barpass.orderservice.domain.comanda.vo.ComandaVO;
 import io.swagger.annotations.ApiParam;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Generated;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -76,17 +75,14 @@ public class ComandasApiController implements ComandasApi {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ResponseBody
     public void deletarComanda(@ApiParam(value = "id da comanda", required = true) @PathVariable("idComanda") UUID idComanda) {
-        var builder = DeletarComandaCommand.DeletarComandaCommandBuilder.builder();
-        DeletarComandaCommand command = builder.withIdComanda(idComanda).build();
-
-        this.comandaService.delete(command);
+        this.comandaService.delete(idComanda);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ComandaResponseList listarComandas(@ApiParam(value = "Identificador Unico do Usuario") @Valid @RequestParam(value = "idUsuario", required = false) UUID idUsuario,
                                               @ApiParam(value = "Numero da COmanda Fisica") @Valid @RequestParam(value = "numero", required = false) Long numero,
-                                              @ApiParam(value = "Data de Vigencia da Comanda") @Valid @RequestParam(value = "dataVigencia", required = false) Instant dataVigencia) {
+                                              @ApiParam(value = "Data de Vigencia da Comanda") @Valid @RequestParam(value = "dataVigencia", required = false) LocalDateTime dataVigencia) {
         List<ComandaVO> list = this.comandaService.list(idUsuario, numero, dataVigencia);
         return new ComandaResponseList(list.stream().map(this::parseResponse).collect(Collectors.toList()));
     }

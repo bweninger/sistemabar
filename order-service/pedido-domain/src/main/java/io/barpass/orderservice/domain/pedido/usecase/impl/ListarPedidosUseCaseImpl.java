@@ -3,19 +3,19 @@ package io.barpass.orderservice.domain.pedido.usecase.impl;
 import io.barpass.orderservice.domain.pedido.dataprovider.PedidoDataProvider;
 import io.barpass.orderservice.domain.pedido.entity.Pedido;
 import io.barpass.orderservice.domain.pedido.usecase.ListarPedidosUseCase;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.UUID;
 
-@Named
+@Component
 public class ListarPedidosUseCaseImpl implements ListarPedidosUseCase {
 
     private PedidoDataProvider pedidoDataProvider;
 
-    @Inject
+    @Autowired
     public ListarPedidosUseCaseImpl(PedidoDataProvider pedidoDataProvider) {
         this.pedidoDataProvider = pedidoDataProvider;
     }

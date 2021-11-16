@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -32,7 +33,7 @@ public class PedidoResponse {
     private ItemPedidosResponseList itemPedidos = null;
 
     @JsonProperty("dataPedido")
-    private Instant dataPedido = null;
+    private LocalDateTime dataPedido = null;
 
     /**
      * id do Pedido
@@ -101,11 +102,11 @@ public class PedidoResponse {
      **/
     @ApiModelProperty(value = "")
     @Valid
-    public Instant getDataPedido() {
+    public LocalDateTime getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPedido(Instant dataPedido) {
+    public void setDataPedido(LocalDateTime dataPedido) {
         this.dataPedido = dataPedido;
     }
 

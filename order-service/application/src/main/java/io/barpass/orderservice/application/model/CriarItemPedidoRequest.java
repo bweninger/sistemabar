@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * Objeto para criação de um item de pedido.
@@ -17,7 +18,7 @@ import java.util.Objects;
 public class CriarItemPedidoRequest   {
 
   @JsonProperty("idProduto")
-  private Object idProduto = null;
+  private UUID idProduto = null;
 
   @JsonProperty("status")
   private String status = null;
@@ -25,7 +26,7 @@ public class CriarItemPedidoRequest   {
   @JsonProperty("quantidade")
   private Integer quantidade = null;
 
-  public CriarItemPedidoRequest idProduto(Object idProduto) {
+  public CriarItemPedidoRequest idProduto(UUID idProduto) {
     this.idProduto = idProduto;
     return this;
   }
@@ -36,11 +37,11 @@ public class CriarItemPedidoRequest   {
   **/
   @ApiModelProperty(required = true, value = "id do produto")
   @NotNull
-  public Object getIdProduto() {
+  public UUID getIdProduto() {
     return idProduto;
   }
 
-  public void setIdProduto(Object idProduto) {
+  public void setIdProduto(UUID idProduto) {
     this.idProduto = idProduto;
   }
 

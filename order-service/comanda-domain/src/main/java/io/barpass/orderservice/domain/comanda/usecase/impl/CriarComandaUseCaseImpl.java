@@ -2,19 +2,20 @@ package io.barpass.orderservice.domain.comanda.usecase.impl;
 
 import io.barpass.orderservice.domain.comanda.dataprovider.ComandaDataProvider;
 import io.barpass.orderservice.domain.comanda.entity.Comanda;
+import io.barpass.orderservice.domain.comanda.entity.StatusComanda;
 import io.barpass.orderservice.domain.comanda.entity.TipoComanda;
 import io.barpass.orderservice.domain.comanda.usecase.CriarComandaUseCase;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Collection;
 
-@Named
+@Component
 public class CriarComandaUseCaseImpl implements CriarComandaUseCase {
 
     private ComandaDataProvider comandaDataProvider;
 
-    @Inject
+    @Autowired
     public CriarComandaUseCaseImpl(ComandaDataProvider comandaDataProvider) {
         this.comandaDataProvider = comandaDataProvider;
     }
@@ -39,6 +40,10 @@ public class CriarComandaUseCaseImpl implements CriarComandaUseCase {
 
         if (comanda.getTipo().equals(TipoComanda.FISICA) && comanda.getNumeroComanda() == null) {
             throw new IllegalArgumentException("Numero da Comanda é obrigatório quando Comanda é do tipo Física.");
+        }
+
+        if (!comanda.getStatus().equals(StatusComanda.ABERTA)) {
+            throw new IllegalArgumentException("Comanda deve ser criada com status ABERTA.");
         }
     }
 

@@ -1,6 +1,7 @@
 package io.barpass.orderservice.domain.comanda.command;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -10,7 +11,7 @@ public class CriarComandaCommand {
 
     private Long numeroComanda;
 
-    private Instant dataInicioVigencia;
+    private LocalDateTime dataInicioVigencia;
 
     private String tipoComanda;
 
@@ -26,7 +27,7 @@ public class CriarComandaCommand {
         return Optional.ofNullable(idUsuario);
     }
 
-    public Optional<Instant> getDataInicioVigencia() {
+    public Optional<LocalDateTime> getDataInicioVigencia() {
         return Optional.ofNullable(dataInicioVigencia);
     }
 
@@ -34,7 +35,7 @@ public class CriarComandaCommand {
     public static final class CriarComandaCommandBuilder {
         private UUID idUsuario;
         private Long numeroComanda;
-        private Instant dataInicioVigencia;
+        private LocalDateTime dataInicioVigencia;
         private String tipoComanda;
 
         private CriarComandaCommandBuilder() {
@@ -54,7 +55,7 @@ public class CriarComandaCommand {
             return this;
         }
 
-        public CriarComandaCommandBuilder withDataInicioVigencia(Instant dataInicioVigencia) {
+        public CriarComandaCommandBuilder withDataInicioVigencia(LocalDateTime dataInicioVigencia) {
             this.dataInicioVigencia = dataInicioVigencia;
             return this;
         }

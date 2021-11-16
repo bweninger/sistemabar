@@ -3,19 +3,19 @@ package io.barpass.orderservice.domain.comanda.usecase.impl;
 import io.barpass.orderservice.domain.comanda.dataprovider.ComandaDataProvider;
 import io.barpass.orderservice.domain.comanda.entity.Comanda;
 import io.barpass.orderservice.domain.comanda.usecase.ListarComandasUseCase;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.UUID;
 
-@Named
+@Component
 public class ListarComandasUseCaseImpl implements ListarComandasUseCase {
 
     private ComandaDataProvider comandaDataProvider;
 
-    @Inject
+    @Autowired
     public ListarComandasUseCaseImpl(ComandaDataProvider comandaDataProvider) {
         this.comandaDataProvider = comandaDataProvider;
     }
@@ -26,7 +26,7 @@ public class ListarComandasUseCaseImpl implements ListarComandasUseCase {
     }
 
     @Override
-    public Collection<Comanda> listByIdUsuarioNumeroAndVigencia(UUID idUsuario, Long numeroComanda, Instant dataVigencia) {
+    public Collection<Comanda> listByIdUsuarioNumeroAndVigencia(UUID idUsuario, Long numeroComanda, LocalDateTime dataVigencia) {
         if (idUsuario == null && numeroComanda == null && dataVigencia == null) {
             return list();
         } else {
